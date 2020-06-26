@@ -1,8 +1,23 @@
-import React from "react";
+import React, { Component } from "react";
+
+import GridView from "./Components/GridView";
+
 import "./App.css";
 
-function App() {
-  return <div className="app"></div>;
-}
+export default class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
 
-export default App;
+  componentDidMount() {}
+
+  render() {
+    return (
+      <div className="app">
+        <span className="app-title">My Collection</span>
+        <GridView />
+      </div>
+    );
+  }
+}
