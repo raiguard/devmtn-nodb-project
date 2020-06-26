@@ -21,6 +21,10 @@ export default class GridView extends Component {
         <AmiiboCard />
         <AmiiboCard />
         <AmiiboCard />
+        <AmiiboCard />
+        <AmiiboCard />
+        <AmiiboCard />
+        <AmiiboCard />
       </div>
     );
   }

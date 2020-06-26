@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 
+import InputField from "./InputField";
+
 export default class GridView extends Component {
   constructor(props) {
     super(props);
@@ -13,6 +15,7 @@ export default class GridView extends Component {
           <img
             className="amiibo-image"
             src="https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_01010000-03520902.png"
+            alt="Zelda"
           />
         </div>
         <span className="amiibo-name">Zelda</span>
