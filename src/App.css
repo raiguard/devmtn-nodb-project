@@ -1,0 +1,49 @@
+@font-face {
+  font-family: Torus;
+  src: url(fonts/Torus-Bold.otf);
+  font-weight: 700;
+  -webkit-font-smoothing: antialiased;
+}
+
+@font-face {
+  font-family: Torus;
+  src: url(fonts/Torus-Heavy.otf);
+  font-weight: 900;
+  -webkit-font-smoothing: antialiased;
+}
+
+@font-face {
+  font-family: Torus;
+  src: url(fonts/Torus-Light.otf);
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+}
+
+@font-face {
+  font-family: Torus;
+  src: url(fonts/Torus-Regular.otf);
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+}
+
+@font-face {
+  font-family: Torus;
+  src: url(fonts/Torus-SemiBold.otf);
+  font-weight: 500;
+  -webkit-font-smoothing: antialiased;
+}
+
+@font-face {
+  font-family: Torus;
+  src: url(fonts/Torus-Thin.otf);
+  font-weight: 100;
+  -webkit-font-smoothing: antialiased;
+}
+
+.app {
+  font-family: Torus;
+  background-color: #2e3458;
+  color: white;
+  width: 100vw;
+  height: 100vh;
+}
