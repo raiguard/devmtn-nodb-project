@@ -13,7 +13,8 @@ export default class GridView extends Component {
   onNameClick = () => this.setState({ showInputField: true });
 
   changeName = (newName) => {
-    alert(`TODO: change name to ${newName}`);
+    const { changeNameFn, index } = this.props;
+    changeNameFn(index, newName);
     this.setState({ showInputField: false });
   };
 
