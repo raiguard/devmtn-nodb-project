@@ -5,20 +5,29 @@ import InputField from "./InputField";
 export default class GridView extends Component {
   constructor(props) {
     super(props);
-    this.state = { ...props };
+    this.state = {
+      showInputField: false
+    };
   }
+
+  onNameClick = () => this.setState({ showInputField: true });
+
   render() {
+    const { showInputField } = this.state;
+    const { name, image } = this.props;
     return (
       <div className="amiibo-card">
         {/* wrap image in a div to preserve aspect ratio with flexbox */}
         <div className="amiibo-image-container">
-          <img
-            className="amiibo-image"
-            src="https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_01010000-03520902.png"
-            alt="Zelda"
-          />
+          <img className="amiibo-image" src={image} alt={name} />
         </div>
-        <span className="amiibo-name">Zelda</span>
+        {showInputField ? (
+          <InputField placeholder="Enter name" initialText={name} />
+        ) : (
+          <span className="amiibo-name" onClick={this.onNameClick}>
+            {name}
+          </span>
+        )}
       </div>
     );
   }

@@ -16,7 +16,7 @@ export default class App extends Component {
     return (
       <div className="app">
         <span className="app-title">My Collection</span>
-        <GridView />
+        <GridView showAddButton={true} />
       </div>
     );
   }

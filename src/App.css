@@ -55,9 +55,8 @@
 .grid-view {
   box-sizing: border-box;
   margin-top: 4rem;
-  width: 50rem;
+  width: 48rem;
   display: flex;
-  justify-content: space-between;
   flex-wrap: wrap;
 }
 
@@ -66,15 +65,23 @@
   color: black;
   border-radius: 0.5rem;
   width: 10rem;
-  height: 13rem;
+  height: 14rem;
   box-sizing: border-box;
   margin: 1rem;
   padding: 0.5rem;
+  padding-bottom: 0rem;
   box-shadow: 0.25rem 0.25rem 0.5rem black;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
+}
+
+.add-amiibo-button {
+  background-color: rgb(255, 187, 61);
+  font-size: 3rem;
+  user-select: none;
+  cursor: pointer;
 }
 
 .amiibo-image-container {
@@ -88,4 +95,12 @@
 
 .amiibo-name {
   font-weight: 500;
+  cursor: pointer;
+  user-select: none;
+  margin-bottom: 0.5rem;
+}
+
+.amiibo-input-field {
+  width: 100%;
+  margin-bottom: 0.25rem;
 }
