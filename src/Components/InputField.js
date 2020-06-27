@@ -11,8 +11,7 @@ export default class GridView extends Component {
   onChange = (e) => this.setState({ currentText: e.target.value });
 
   onKeyUp = (e) => {
-    // TODO set name for amiibo and hide input field
-    if (e.keyCode === 13) alert("Hello!");
+    if (e.keyCode === 13) this.props.changeNameFn(this.state.currentText);
   };
 
   render = () => {

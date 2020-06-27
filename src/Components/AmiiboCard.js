@@ -12,6 +12,11 @@ export default class GridView extends Component {
 
   onNameClick = () => this.setState({ showInputField: true });
 
+  changeName = (newName) => {
+    alert(`TODO: change name to ${newName}`);
+    this.setState({ showInputField: false });
+  };
+
   render() {
     const { showInputField } = this.state;
     const { name, image } = this.props;
@@ -22,7 +27,7 @@ export default class GridView extends Component {
           <img className="amiibo-image" src={image} alt={name} />
         </div>
         {showInputField ? (
-          <InputField placeholder="Enter name" initialText={name} />
+          <InputField placeholder="Enter name" initialText={name} changeNameFn={this.changeName} />
         ) : (
           <span className="amiibo-name" onClick={this.onNameClick}>
             {name}
