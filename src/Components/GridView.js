@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 
+import axios from "axios";
+
 import AddAmiiboButton from "./AddAmiiboButton";
 import AmiiboCard from "./AmiiboCard";
 
@@ -7,15 +9,20 @@ export default class GridView extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      items: [
-        {
-          index: 0,
-          image: "https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_00000000-00340102.png",
-          name: "Mario"
-        }
-      ],
-      showAddButton: this.props.showAddButton
+      items: [],
+      showAddButton: true
     };
+  }
+
+  componentDidMount() {
+    axios
+      .get("/api/amiibo/")
+      .then((res) => {
+        console.log(res);
+        this.setState({ items: res.data });
+        console.log(res.data);
+      })
+      .catch((err) => console.log(err));
   }
 
   onAddButtonClick = () => {
