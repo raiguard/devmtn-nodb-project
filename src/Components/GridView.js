@@ -9,20 +9,19 @@ export default class GridView extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      items: [],
-      showAddButton: true
+      items: []
     };
   }
 
   componentDidMount() {
-    axios
-      .get("/api/amiibo/")
-      .then((res) => {
-        console.log(res);
-        this.setState({ items: res.data });
-        console.log(res.data);
-      })
-      .catch((err) => console.log(err));
+    this.updateItems();
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.view !== this.props.view) {
+      this.updateItems();
+      console.log("UPDATED");
+    }
   }
 
   onAddButtonClick = () => {
@@ -31,6 +30,24 @@ export default class GridView extends Component {
 
   changeName = (index, newName) => {
     // TODO change name on backend, update items
+  };
+
+  updateItems = () => {
+    if (this.props.view === "collection") {
+      axios
+        .get("/api/collection/")
+        .then((res) => {
+          this.setState({ items: res.data });
+        })
+        .catch((err) => console.log(err));
+    } else {
+      axios
+        .get("/api/amiibo/")
+        .then((res) => {
+          this.setState({ items: res.data });
+        })
+        .catch((err) => console.log(err));
+    }
   };
 
   render() {
@@ -47,7 +64,7 @@ export default class GridView extends Component {
             allowEdit={true}
           />
         ))}
-        {showAddButton ? <AddAmiiboButton onClick={this.onAddButtonClick} /> : null}
+        {/* {showAddButton ? <AddAmiiboButton onClick={this.onAddButtonClick} /> : null} */}
       </div>
     );
   }
