@@ -20,7 +20,7 @@ export default class GridView extends Component {
 
   render() {
     const { showInputField } = this.state;
-    const { name, image } = this.props;
+    const { name, image, allowEdit } = this.props;
     return (
       <div className="amiibo-card">
         {/* wrap image in a div to preserve aspect ratio with flexbox */}
@@ -30,7 +30,10 @@ export default class GridView extends Component {
         {showInputField ? (
           <InputField placeholder="Enter name" initialText={name} changeNameFn={this.changeName} />
         ) : (
-          <span className="amiibo-name" onClick={this.onNameClick}>
+          <span
+            className={`amiibo-name ${allowEdit ? "amiibo-name-editable" : null}`}
+            onClick={allowEdit ? this.onNameClick : null}
+          >
             {name}
           </span>
         )}

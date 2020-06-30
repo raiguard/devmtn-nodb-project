@@ -4,10 +4,6 @@ import AddAmiiboButton from "./AddAmiiboButton";
 import AmiiboCard from "./AmiiboCard";
 
 export default class GridView extends Component {
-  // constructor(props) {
-  //   super(props);
-  // }
-
   onAddButtonClick = () => {
     // TODO switch to library GridView
   };
@@ -17,7 +13,7 @@ export default class GridView extends Component {
   };
 
   render() {
-    const { items, showAddButton } = this.props;
+    const { items, view } = this.props;
     return (
       <div className="grid-view">
         {items.map((item, i) => (
@@ -27,10 +23,10 @@ export default class GridView extends Component {
             image={item.image}
             index={item.index}
             changeNameFn={this.changeName}
-            allowEdit={true}
+            allowEdit={view === "collection"}
           />
         ))}
-        {showAddButton ? <AddAmiiboButton onClick={this.onAddButtonClick} /> : null}
+        {view === "collection" ? <AddAmiiboButton onClick={this.onAddButtonClick} /> : null}
       </div>
     );
   }

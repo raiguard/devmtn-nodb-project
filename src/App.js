@@ -11,7 +11,7 @@ export default class App extends Component {
     super(props);
     this.state = {
       items: [],
-      view: "collection"
+      view: "library"
     };
   }
 
@@ -42,7 +42,7 @@ export default class App extends Component {
     return (
       <div className="app">
         <span className="app-title">{view === "collection" ? "My Collection" : "Add an Amiibo"}</span>
-        <GridView items={items} showAddButton={view === "collection" ? true : false} />
+        <GridView items={items} view={view} />
         {/* TODO show editor toolbar */}
       </div>
     );
