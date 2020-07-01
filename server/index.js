@@ -11,6 +11,7 @@ app.get("/api/amiibo/:id", amiiboController.getOne);
 app.get("/api/collection", collectionController.getAll);
 app.post("/api/collection", collectionController.add);
 app.put("/api/collection/:index", collectionController.editName);
+app.delete("/api/collection/:index", collectionController.deleteOne);
 
 const port = 4444;
 app.listen(port, () => console.log(`Server started on port ${port}`));

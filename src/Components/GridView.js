@@ -13,6 +13,14 @@ export default class GridView extends Component {
       .catch((err) => console.log(err));
   };
 
+  deleteAmiiboInCollection = (_, __, index) => {
+    console.log("BAAAAAAAAAAAAAAAAAAAAAARD");
+    axios
+      .delete(`/api/collection/${index}`)
+      .then(() => this.props.updateItemsFn())
+      .catch((err) => console.log(err));
+  };
+
   selectAmiiboInLibrary = (name, image) => {
     const { view, switchViewFn } = this.props;
     if (view === "library") {
@@ -34,8 +42,8 @@ export default class GridView extends Component {
             image={item.image}
             index={item.index}
             changeNameFn={this.changeName}
-            allowEdit={view === "collection"}
-            onClickFn={view === "library" ? this.selectAmiiboInLibrary : () => null}
+            onClickFn={view === "library" ? this.selectAmiiboInLibrary : this.deleteAmiiboInCollection}
+            view={view}
           />
         ))}
         {view === "collection" ? <AddAmiiboButton onClick={() => switchViewFn("library")} /> : null}

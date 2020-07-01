@@ -19,11 +19,20 @@ module.exports = {
 
     index = Number(index);
 
-    const pos = collection.findIndex((amiibo) => {
-      return amiibo.index === index;
-    });
+    const pos = collection.findIndex((amiibo) => amiibo.index === index);
     if (pos !== -1) {
       collection[pos].name = newName;
+      res.sendStatus(200);
+    } else {
+      res.status(500).send(`Could not find amiibo in collection of index ${index}`);
+    }
+  },
+  deleteOne: (req, res) => {
+    const index = Number(req.params.index);
+    const pos = collection.findIndex((amiibo) => amiibo.index === index);
+    console.log(index, pos);
+    if (pos !== -1) {
+      collection.splice(pos, 1);
       res.sendStatus(200);
     } else {
       res.status(500).send(`Could not find amiibo in collection of index ${index}`);

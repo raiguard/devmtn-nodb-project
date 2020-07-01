@@ -75,22 +75,27 @@
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-}
-
-.amiibo-card-clickable {
   cursor: pointer;
 }
 
 .amiibo-card-clickable:hover {
-  background-color: lightyellow;
+  background-color: lightgreen;
+}
+
+.amiibo-card-deletable:hover {
+  background-color: lightpink;
 }
 
 .add-amiibo-button {
-  background-color: rgb(255, 187, 61);
+  background-color: #ffbb3d;
   font-size: 3rem;
   user-select: none;
   cursor: pointer;
   padding-bottom: 0.5rem;
+}
+
+.add-amiibo-button:hover {
+  background-color: #ffca67;
 }
 
 .amiibo-image-container {
@@ -116,6 +121,10 @@
 
 .amiibo-name-editable {
   cursor: pointer;
+}
+
+.amiibo-name-editable:hover {
+  color: #2c2c2c;
 }
 
 .amiibo-input-field {

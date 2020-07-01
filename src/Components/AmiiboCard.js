@@ -10,7 +10,10 @@ export default class GridView extends Component {
     };
   }
 
-  onNameClick = () => this.setState({ showInputField: true });
+  onNameClick = (e) => {
+    e.stopPropagation();
+    this.setState({ showInputField: true });
+  };
 
   changeName = (newName) => {
     const { changeNameFn, index } = this.props;
@@ -20,22 +23,28 @@ export default class GridView extends Component {
 
   render() {
     const { showInputField } = this.state;
-    const { name, image, allowEdit, onClickFn } = this.props;
+    const { index, name, image, onClickFn, view } = this.props;
+    const nameIsEditable = view === "collection";
     return (
       <div
-        className={`amiibo-card ${allowEdit ? "" : "amiibo-card-clickable"}`}
-        onClick={allowEdit ? () => null : () => onClickFn(name, image)}
+        className={`amiibo-card ${nameIsEditable ? "amiibo-card-deletable" : "amiibo-card-clickable"}`}
+        onClick={() => onClickFn(name, image, index)}
       >
         {/* wrap image in a div to preserve aspect ratio with flexbox */}
         <div className="amiibo-image-container">
           <img className="amiibo-image" src={image} alt={name} />
         </div>
         {showInputField ? (
-          <InputField placeholder="Enter name" initialText={name} onConfirmFn={this.changeName} />
+          <InputField
+            style="amiibo-input-field"
+            placeholder="Enter name"
+            initialText={name}
+            onConfirmFn={this.changeName}
+          />
         ) : (
           <span
-            className={`amiibo-name ${allowEdit ? "amiibo-name-editable" : null}`}
-            onClick={allowEdit ? this.onNameClick : () => null}
+            className={`amiibo-name ${nameIsEditable ? "amiibo-name-editable" : null}`}
+            onClick={nameIsEditable ? this.onNameClick : () => null}
           >
             {name}
           </span>

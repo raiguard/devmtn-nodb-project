@@ -14,6 +14,8 @@ export default class GridView extends Component {
     if (e.keyCode === 13) this.props.onConfirmFn(this.state.currentText);
   };
 
+  onClick = (e) => e.stopPropagation();
+
   render = () => {
     const { placeholder, style } = this.props;
     const { currentText } = this.state;
@@ -24,6 +26,7 @@ export default class GridView extends Component {
         value={currentText}
         onChange={this.onChange}
         onKeyUp={this.onKeyUp}
+        onClick={this.onClick}
       />
     );
   };
