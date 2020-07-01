@@ -11,15 +11,15 @@ export default class GridView extends Component {
   onChange = (e) => this.setState({ currentText: e.target.value });
 
   onKeyUp = (e) => {
-    if (e.keyCode === 13) this.props.changeNameFn(this.state.currentText);
+    if (e.keyCode === 13) this.props.onConfirmFn(this.state.currentText);
   };
 
   render = () => {
-    const { placeholder } = this.props;
+    const { placeholder, style } = this.props;
     const { currentText } = this.state;
     return (
       <input
-        className="amiibo-input-field"
+        className={style}
         placeholder={placeholder}
         value={currentText}
         onChange={this.onChange}

@@ -11,7 +11,7 @@ export default class App extends Component {
     super(props);
     this.state = {
       items: [],
-      view: "library"
+      view: "collection"
     };
   }
 
@@ -19,8 +19,20 @@ export default class App extends Component {
     this.updateItems();
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.view !== prevState.view) {
+      this.updateItems();
+    }
+  }
+
+  switchView = (view) => {
+    this.setState({ view });
+    // this.updateItems();
+  };
+
   updateItems = () => {
     if (this.state.view === "collection") {
+      console.log("COLLECTION");
       axios
         .get("/api/collection/")
         .then((res) => {
@@ -28,6 +40,7 @@ export default class App extends Component {
         })
         .catch((err) => console.log(err));
     } else {
+      console.log("LIBRARY");
       axios
         .get("/api/amiibo/")
         .then((res) => {
@@ -42,7 +55,7 @@ export default class App extends Component {
     return (
       <div className="app">
         <span className="app-title">{view === "collection" ? "My Collection" : "Add an Amiibo"}</span>
-        <GridView items={items} view={view} />
+        <GridView items={items} view={view} switchViewFn={this.switchView} />
         {/* TODO show editor toolbar */}
       </div>
     );

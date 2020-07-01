@@ -77,6 +77,14 @@
   align-items: center;
 }
 
+.amiibo-card-clickable {
+  cursor: pointer;
+}
+
+.amiibo-card-clickable:hover {
+  background-color: lightyellow;
+}
+
 .add-amiibo-button {
   background-color: rgb(255, 187, 61);
   font-size: 3rem;
