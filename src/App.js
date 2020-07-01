@@ -19,7 +19,7 @@ export default class App extends Component {
     this.updateItems();
   }
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(_, prevState) {
     if (this.state.view !== prevState.view) {
       this.updateItems();
     }
@@ -27,7 +27,6 @@ export default class App extends Component {
 
   switchView = (view) => {
     this.setState({ view });
-    // this.updateItems();
   };
 
   updateItems = () => {
