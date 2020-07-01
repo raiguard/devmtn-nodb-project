@@ -20,11 +20,11 @@ export default class GridView extends Component {
 
   render() {
     const { showInputField } = this.state;
-    const { index, name, image, allowEdit, onClickFn } = this.props;
+    const { name, image, allowEdit, onClickFn } = this.props;
     return (
       <div
-        className={`amiibo-card ${onClickFn ? "amiibo-card-clickable" : null}`}
-        onClick={() => onClickFn(name, image)}
+        className={`amiibo-card ${allowEdit ? "" : "amiibo-card-clickable"}`}
+        onClick={allowEdit ? () => null : () => onClickFn(name, image)}
       >
         {/* wrap image in a div to preserve aspect ratio with flexbox */}
         <div className="amiibo-image-container">
@@ -35,7 +35,7 @@ export default class GridView extends Component {
         ) : (
           <span
             className={`amiibo-name ${allowEdit ? "amiibo-name-editable" : null}`}
-            onClick={allowEdit ? this.onNameClick : null}
+            onClick={allowEdit ? this.onNameClick : () => null}
           >
             {name}
           </span>

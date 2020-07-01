@@ -25,10 +25,6 @@ export default class App extends Component {
     }
   }
 
-  changeName = (index, newName) => {
-    // TODO
-  };
-
   switchView = (view) => {
     this.setState({ view });
   };
@@ -56,7 +52,7 @@ export default class App extends Component {
     return (
       <div className="app">
         <span className="app-title">{view === "collection" ? "My Collection" : "Add an Amiibo"}</span>
-        <GridView items={items} view={view} switchViewFn={this.switchView} changeNameFn={this.changeName} />
+        <GridView items={items} view={view} switchViewFn={this.switchView} updateItemsFn={this.updateItems} />
         {/* TODO show editor toolbar */}
       </div>
     );

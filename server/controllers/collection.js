@@ -12,5 +12,21 @@ module.exports = {
     nextIndex++;
 
     res.sendStatus(200);
+  },
+  editName: (req, res) => {
+    let { index } = req.params;
+    const { newName } = req.body;
+
+    index = Number(index);
+
+    const pos = collection.findIndex((amiibo) => {
+      return amiibo.index === index;
+    });
+    if (pos !== -1) {
+      collection[pos].name = newName;
+      res.sendStatus(200);
+    } else {
+      res.status(500).send(`Could not find amiibo in collection of index ${index}`);
+    }
   }
 };

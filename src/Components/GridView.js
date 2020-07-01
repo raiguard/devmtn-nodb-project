@@ -6,16 +6,25 @@ import AddAmiiboButton from "./AddAmiiboButton";
 import AmiiboCard from "./AmiiboCard";
 
 export default class GridView extends Component {
+  changeName = (index, newName) => {
+    axios
+      .put(`/api/collection/${index}`, { newName })
+      .then(() => this.props.updateItemsFn())
+      .catch((err) => console.log(err));
+  };
+
   selectAmiiboInLibrary = (name, image) => {
     const { view, switchViewFn } = this.props;
     if (view === "library") {
-      axios.post("/api/collection", { name, image });
-      switchViewFn("collection");
+      axios
+        .post("/api/collection", { name, image })
+        .then(() => switchViewFn("collection"))
+        .catch((err) => console.log(err));
     }
   };
 
   render() {
-    const { items, view, switchViewFn, changeNameFn } = this.props;
+    const { items, view, switchViewFn } = this.props;
     return (
       <div className="grid-view">
         {items.map((item, i) => (
@@ -24,9 +33,9 @@ export default class GridView extends Component {
             name={item.name}
             image={item.image}
             index={item.index}
-            changeNameFn={changeNameFn}
+            changeNameFn={this.changeName}
             allowEdit={view === "collection"}
-            onClickFn={view === "library" ? this.selectAmiiboInLibrary : null}
+            onClickFn={view === "library" ? this.selectAmiiboInLibrary : () => null}
           />
         ))}
         {view === "collection" ? <AddAmiiboButton onClick={() => switchViewFn("library")} /> : null}
