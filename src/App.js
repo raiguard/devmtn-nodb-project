@@ -25,13 +25,16 @@ export default class App extends Component {
     }
   }
 
+  changeName = (index, newName) => {
+    // TODO
+  };
+
   switchView = (view) => {
     this.setState({ view });
   };
 
   updateItems = () => {
     if (this.state.view === "collection") {
-      console.log("COLLECTION");
       axios
         .get("/api/collection/")
         .then((res) => {
@@ -39,7 +42,6 @@ export default class App extends Component {
         })
         .catch((err) => console.log(err));
     } else {
-      console.log("LIBRARY");
       axios
         .get("/api/amiibo/")
         .then((res) => {
@@ -54,7 +56,7 @@ export default class App extends Component {
     return (
       <div className="app">
         <span className="app-title">{view === "collection" ? "My Collection" : "Add an Amiibo"}</span>
-        <GridView items={items} view={view} switchViewFn={this.switchView} />
+        <GridView items={items} view={view} switchViewFn={this.switchView} changeNameFn={this.changeName} />
         {/* TODO show editor toolbar */}
       </div>
     );

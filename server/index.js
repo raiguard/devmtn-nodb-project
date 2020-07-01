@@ -8,6 +8,8 @@ app.use(express.json());
 
 app.get("/api/amiibo", amiiboController.getAll);
 app.get("/api/amiibo/:id", amiiboController.getOne);
+app.get("/api/collection", collectionController.getAll);
+app.post("/api/collection", collectionController.add);
 
 const port = 4444;
 app.listen(port, () => console.log(`Server started on port ${port}`));
