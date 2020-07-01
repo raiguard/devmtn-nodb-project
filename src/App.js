@@ -50,10 +50,10 @@ export default class App extends Component {
   render() {
     const { items, view } = this.state;
     return (
-      <div className="app">
+      <main className="app">
         <span className="app-title">{view === "collection" ? "My Collection" : "Add an Amiibo"}</span>
         <GridView items={items} view={view} switchViewFn={this.switchView} updateItemsFn={this.updateItems} />
-      </div>
+      </main>
     );
   }
 }

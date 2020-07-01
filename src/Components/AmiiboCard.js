@@ -31,9 +31,9 @@ export default class GridView extends Component {
         onClick={() => onClickFn(name, image, index)}
       >
         {/* wrap image in a div to preserve aspect ratio with flexbox */}
-        <div className="amiibo-image-container">
+        <figure className="amiibo-image-container">
           <img className="amiibo-image" src={image} alt={name} />
-        </div>
+        </figure>
         {showInputField ? (
           <InputField
             style="amiibo-input-field"

@@ -33,7 +33,7 @@ export default class GridView extends Component {
   render() {
     const { items, view, switchViewFn } = this.props;
     return (
-      <div className="grid-view">
+      <section className="grid-view">
         {items.map((item, i) => (
           <AmiiboCard
             key={i}
@@ -46,7 +46,7 @@ export default class GridView extends Component {
           />
         ))}
         {view === "collection" ? <AddAmiiboButton onClick={() => switchViewFn("library")} /> : null}
-      </div>
+      </section>
     );
   }
 }
