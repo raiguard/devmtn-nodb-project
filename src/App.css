@@ -117,6 +117,9 @@
   user-select: none;
   margin-bottom: 0.5rem;
   text-align: center;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .amiibo-name-editable {

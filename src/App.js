@@ -53,7 +53,6 @@ export default class App extends Component {
       <div className="app">
         <span className="app-title">{view === "collection" ? "My Collection" : "Add an Amiibo"}</span>
         <GridView items={items} view={view} switchViewFn={this.switchView} updateItemsFn={this.updateItems} />
-        {/* TODO show editor toolbar */}
       </div>
     );
   }
