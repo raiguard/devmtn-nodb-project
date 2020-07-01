@@ -30,7 +30,6 @@ module.exports = {
   deleteOne: (req, res) => {
     const index = Number(req.params.index);
     const pos = collection.findIndex((amiibo) => amiibo.index === index);
-    console.log(index, pos);
     if (pos !== -1) {
       collection.splice(pos, 1);
       res.sendStatus(200);
