@@ -14,7 +14,6 @@ export default class GridView extends Component {
   };
 
   deleteAmiiboInCollection = (_, __, index) => {
-    console.log("BAAAAAAAAAAAAAAAAAAAAAARD");
     axios
       .delete(`/api/collection/${index}`)
       .then(() => this.props.updateItemsFn())
